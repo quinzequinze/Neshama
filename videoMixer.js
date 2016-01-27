@@ -9,7 +9,7 @@ var maxValue = 2;
 var flag = {
     mask: false,
     gab: false,
-
+gabSquare:false
 }
 v.play();
 //CONTROLS
@@ -23,6 +23,7 @@ key('enter', function() {
 key('space', function() {
     v.src = 'b.mp4';
 });
+
 key('s', function() {
     if (!gab.flag) {
 s.style.display = 'block';
@@ -33,6 +34,7 @@ s.style.display = 'none';
 gabSquare.flag =false;
     }
 });
+
 key('g', function() {
     console.log("gab :"+gab.flag);
     if (!gab.flag) {
