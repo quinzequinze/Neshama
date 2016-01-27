@@ -34,7 +34,7 @@ gabSquare.flag =false;
     }
 });
 key('g', function() {
-	console.log("gab :"+gab.flag);
+    console.log("gab :"+gab.flag);
     if (!gab.flag) {
 g.style.display = 'block';
 gab.flag =true;
@@ -45,7 +45,7 @@ gab.flag =false;
     }
 });
 key('m', function() {
-	console.log("mask :"+mask.flag);
+    console.log("mask :"+mask.flag);
     if (!mask.flag) {
 m.style.display = 'block';
 mask.flag =true;
@@ -72,6 +72,13 @@ key('d', function() {
     console.log(v.duration);
 });
 
+
+for(var i=1;i<9;i++){
+key(i.toString(), function() {
+    v.src = 'robin'+i+'.mp4';
+});
+}
+
 //PARSING
 function parseMsg(data) {
     data = data.split(" ");
@@ -94,7 +101,7 @@ function parseMsg(data) {
             console.log("WARMING");
             console.log(data[1]);
             if(countTop = null){
-            	countTop = data[1];
+                countTop = data[1];
             }
             v.src = v_Dir+'warming.mp4';
             v.currentTime = data[1]*50/countTop;
