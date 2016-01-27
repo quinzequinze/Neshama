@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="keymaster.js"></script>
+<script src="fullscreen.js"></script>
+</head>
+<body>
+
+<video loop width="1080" height="1080" autoplay class="mainVid">
+<source src="" type="video/mp4">
+</video>
+<div id="gab"></div>
+<div id="gabSquare"></div>
+<div id="mask"></div>
+</body>
+<script type="text/javascript">
+var socket = io.connect();
+var init=false;
+var videoListArray;
+socket.on('msg', function(data) {
+   //console.log(data);
+   if(init==true){
+    parseMsg(data);
+   }
+});
+
+socket.on('videoList', function(data) {
+videoListArray = data;
+console.log(data);
+console.log("event LIST");
+});
+</script>
+
+<script src="videoMixer.js"></script>
+</html>

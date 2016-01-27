@@ -1,0 +1,42 @@
+body{
+cursor: none;
+width:1920px;
+height:1080px;
+background:black;
+}
+
+#mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  background: url("img/mask.png") repeat;
+  display:none;
+}
+
+#gab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  background: url("img/gab.png") repeat;
+    display:none;
+}
+
+.mainVid{
+  background-color: red !important; /* or whatever you want */
+  position: absolute;
+  top: 0;
+  left: 475px;
+}
+
+#gabSquare{
+  background: url("img/gabSquare.png") repeat;
+  position: absolute;
+  top: 0;
+  left: 475px;
+  width:1080px;
+  height:1080px;
+}
