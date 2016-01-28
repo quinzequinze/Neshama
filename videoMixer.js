@@ -135,7 +135,6 @@ function parseMsg(data) {
             // v.currentTime = data[1]*50/countTop;
             break;
         case "blow":
-            //stop loop and catch first for playing the sound
             if (firstBlow) {
                 a.loop = false;
                 a.src = "blow.wav";
