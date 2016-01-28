@@ -103,6 +103,7 @@ var videoListArray;
 
 app.use(express.static(__dirname));
 app.use(express.static(__dirname + '/video'));
+app.use(express.static(__dirname + '/sound'));
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/img'));
 
@@ -129,6 +130,7 @@ fs.readFile(__dirname+'/videoList.txt', function(err, data) {
     var videoListArray = data.toString().split("\n");
       io.emit("videoList", videoListArray);
 });
+
 
   socket.on('disconnect', function(socket) {
     console.log("bye player");

@@ -5,13 +5,19 @@
 <link rel="stylesheet" type="text/css" href="reset.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="keymaster.js"></script>
+<script src="sound.js"></script>
 <script src="fullscreen.js"></script>
 </head>
 <body>
 
 <video loop width="1080" height="1080" autoplay class="mainVid">
-<source src="" type="video/mp4">
+	<source src="" type="video/mp4">
 </video>
+
+<audio id="audio" src="">
+
+</audio>
+
 <div id="gab"></div>
 <div id="gabSquare"></div>
 <div id="mask"></div>
@@ -20,6 +26,7 @@
 var socket = io.connect();
 var init=false;
 var videoListArray;
+
 socket.on('msg', function(data) {
    //console.log(data);
    if(init==true){
@@ -28,10 +35,11 @@ socket.on('msg', function(data) {
 });
 
 socket.on('videoList', function(data) {
-videoListArray = data;
-console.log(data);
-console.log("event LIST");
+	videoListArray = data;
+	console.log(data);
+	console.log("event LIST");
 });
+
 </script>
 
 <script src="videoMixer.js"></script>
