@@ -1,4 +1,4 @@
-- lancer l’appli « Neshama » sur l’Iphone ;
-- allumer l’ethylo ;
-- lancer bridge.js -> dans le terminal: « node chemin_du_fichier/bridge.js » ;
-- se connecter sur localhost:4000 || vigo.local:4000 ;
+- lancer l’appli « Neshama » sur l’Iphone
+- allumer l’ethylo
+- lancer bridge.js -> dans le terminal: « node chemin_du_fichier/bridge.js »
+- chrome : se connecter sur localhost:4000 || nomDuMac.local:4000

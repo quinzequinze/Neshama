@@ -4,12 +4,16 @@ var pingDelay = 1000;
 var activeSocket;
 var CRLF = "\r\n";
 
+var usbDeamon = false;
+
 var flag = {
     usb: false,
     relay: false,
     tunnel: false,
     pd: false
 };
+
+if(usbDeamon){
 var listener = new usbmux.createListener().on('error', function(err) {}).on('attached', function(udid) {
     console.log("usb : on");
     flag.usb = true;
@@ -29,29 +33,9 @@ function relay() {
         console.log(data.toString());
     })
 }
-/*
-var pdSocket;
-function pdConnect(){
-pdSocket = 	require('net').Socket();
-pdSocket.connect(5001, 'localhost')
-.on('connect', function(data) {
-	flag.pd=true;
-    console.log("pd : on");
-})
-.on('close', function(data) {
-	flag.pd=false;
-    //console.log("pd : close");
-})
-.on('error', (e) => {
-  if (e.code == 'ECONNREFUSED') {
-    //console.log('pD server not found, retrying...');
-  }
-})
-.on('data', function(data) {
-    console.log(data.toString());
-});
-}
-*/
+
+
+
 function tunnel() {
     usbmux.getTunnel(20000, 100).then(function(tunnel) {
         console.log("tunnel : on");
@@ -71,18 +55,20 @@ function tunnel() {
         flag.tunnel = false;
     })
 }
-
+}
 function ping() {
 	
 	/*if(!flag.pd){
 		pdConnect();
 	}*/
+    if(usbDeamon){
     if (!flag.tunnel) {
         tunnel();
     }
     if (!flag.relay) {
         relay();
     }
+}
     if (flag.tunnel == true && flag.relay == true && flag.usb == true) {
         //clearInterval(pinger);
     } else {
@@ -103,9 +89,9 @@ var videoListArray;
 
 app.use(express.static(__dirname));
 app.use(express.static(__dirname + '/video'));
-app.use(express.static(__dirname + '/sound'));
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/img'));
+app.use(express.static(__dirname + '/audio'));
 
 app.get('/', function(req, res) {
   res.sendfile(__dirname + '/index.html');
@@ -130,7 +116,6 @@ fs.readFile(__dirname+'/videoList.txt', function(err, data) {
     var videoListArray = data.toString().split("\n");
       io.emit("videoList", videoListArray);
 });
-
 
   socket.on('disconnect', function(socket) {
     console.log("bye player");

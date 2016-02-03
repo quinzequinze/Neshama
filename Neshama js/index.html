@@ -5,28 +5,43 @@
 <link rel="stylesheet" type="text/css" href="reset.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="keymaster.js"></script>
-<script src="sound.js"></script>
 <script src="fullscreen.js"></script>
 </head>
 <body>
 
 <video loop width="1080" height="1080" autoplay class="mainVid">
-	<source src="" type="video/mp4">
+<source src="" type="video/mp4">
 </video>
 
-<audio id="audio" src="">
+<audio loop autoplay id="loop">
+<source src="" type="audio/wav">
+</audio>
 
+<audio autoplay id="sfx">
+<source src="" type="audio/wav">
 </audio>
 
 <div id="gab"></div>
 <div id="gabSquare"></div>
 <div id="mask"></div>
+<div id="maskSquare"></div>
+<div id="debug"></div>
+<div id="eventDebug">
+<button onclick="parseMsg('connected')">connected</button>
+<button onclick="parseMsg('deconnected')">deconnected</button>
+<button onclick="parseMsg('start')">start</button>
+<button onclick="parseMsg('warming')">warming</button>
+<button onclick="parseMsg('blow')">blow</button>	
+<button onclick="parseMsg('keepBlowing')">keepBlowing</button>
+<button onclick="parseMsg('analysing')">analysing</button>	
+<button onclick="parseMsg('reading')">reading</button>
+<input type="number" name="readingVal" step='0.01'>
+</div>
 </body>
 <script type="text/javascript">
 var socket = io.connect();
 var init=false;
 var videoListArray;
-
 socket.on('msg', function(data) {
    //console.log(data);
    if(init==true){
@@ -35,12 +50,10 @@ socket.on('msg', function(data) {
 });
 
 socket.on('videoList', function(data) {
-	videoListArray = data;
-	console.log(data);
-	console.log("event LIST");
+videoListArray = data;
+console.log(data);
+console.log("event LIST");
 });
-
 </script>
-
 <script src="videoMixer.js"></script>
 </html>

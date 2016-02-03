@@ -1,8 +1,0 @@
-start.wav
-warming.wav
-blow.wav-blowInstruct
-keepBlowing.wav-blow
-endBlow.wav
-analysing.wav
-reading.wav
-videoLoop.wav
