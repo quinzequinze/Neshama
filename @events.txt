@@ -1,0 +1,10 @@
+@EVENTS
+
+connected
+deconnected
+start
+warming
+blow
+keepBlowing
+analysing
+reading
